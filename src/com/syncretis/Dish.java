@@ -8,4 +8,8 @@ public class Dish {
         this.name = name;
         this.cost = cost;
     }
+
+    public String toString() {
+        return "Dish name: " + name + "\tCost: " + cost;
+    }
 }

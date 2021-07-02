@@ -4,6 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
         RegistrationService register = new RegistrationService();
+        DishMenu menu = new DishMenu();
+
+        menu.getMenu();
+
         Client client1 = new Client(8_946_321_48_96L, "Pavel", "Sibirskaya 188");
         Client client2 = new Client(8_946_321_45_45L, "Alexandr", "Lenina 8");
         Client client3 = new Client(8_946_254_48_32L, "Alexey", "Kirova 15");
