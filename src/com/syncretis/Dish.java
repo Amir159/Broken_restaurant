@@ -12,4 +12,5 @@ public class Dish {
     public String toString() {
         return "Dish name: " + name + "\tCost: " + cost;
     }
+
 }

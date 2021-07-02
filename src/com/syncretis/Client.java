@@ -12,7 +12,8 @@ public class Client {
         this.address = address;
     }
 
-    public String get() {
+    @Override
+    public String toString() {
         return "Client:\n\tName: " + name + "\n\tPhone number: " + phoneNumber + "\n\tAddress: " + address;
     }
 
@@ -30,10 +31,14 @@ public class Client {
 
     @Override
     public boolean equals(Object o) {
-        if (Objects.hash(o) != Objects.hash(this)) { return false; }
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
         return phoneNumber == client.phoneNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(phoneNumber);
     }
 }

@@ -9,10 +9,9 @@ public class ClientSet {
 
     public void add(Client c) {
         if (count == capacity) {
-            Client[] arrayCopy = new Client[capacity];
-            capacity *= 2;
-            arrayCopy = Arrays.copyOf(array, capacity);
-            array = Arrays.copyOf(arrayCopy, capacity);
+            //capacity *= 2;
+            Client[] arrayCopy = Arrays.copyOf(array, capacity *= 2);
+            array = arrayCopy;
         }
         if (!contain(c)) {
             array[count] = c;
@@ -21,29 +20,31 @@ public class ClientSet {
     }
 
     public void remove(Client c) {
-        Client[] arrayCopy = new Client[capacity];
         int clientPosition = find(c);
-        if (clientPosition != -1) {
+        if (clientPosition == capacity - 1) {
+            array[clientPosition] = null;
+            count--;
+        } else if (clientPosition != -1) {
             int j = 0;
-            for (int i = 0; i < count; i++) {
-                if (i != clientPosition) {
-                    arrayCopy[j] = array[i];
-                    j++;
-                }
+            for (int i = clientPosition; i < count - 1; i++) {
+                array[i] = array[i + 1];
             }
-            array = Arrays.copyOf(arrayCopy, capacity);
             count--;
         }
     }
 
     public void update(Client c, long phoneNumber, String name, String address) {
-        c.setPhoneNumber(phoneNumber);
-        c.setName(name);
-        c.setAddress(address);
+        int clientPosition = find(c);
+        if (clientPosition != -1) {
+            array[clientPosition].setPhoneNumber(phoneNumber);
+            array[clientPosition].setName(name);
+            array[clientPosition].setAddress(address);
+        }
     }
 
     public int find(Client c) {
         for (int i = 0; i < count; i++) {
+            if (array[i].hashCode() != c.hashCode()) continue;
             if (array[i].equals(c)) {
                 return i;
             }
@@ -53,6 +54,7 @@ public class ClientSet {
 
     public boolean contain(Client c) {
         for (int i = 0; i < count; i++) {
+            if (array[i].hashCode() != c.hashCode()) continue;
             if (array[i].equals(c)) {
                 return true;
             }
@@ -60,7 +62,11 @@ public class ClientSet {
         return false;
     }
 
-    public Client get(int index) { return array[index]; }
+    public Client get(int index) {
+        return array[index];
+    }
 
-    public int length() { return count; }
+    public int length() {
+        return count;
+    }
 }
