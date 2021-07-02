@@ -19,6 +19,11 @@ public class OrderList {
     }
 
     public void getOrdersByClient(Client c) {
-
+        System.out.println(c.toString());
+        for (int i = 0; i < count; i++) {
+            if (array[i].getClient().equals(c)) {
+                System.out.println(array[i].toString());
+            }
+        }
     }
 }

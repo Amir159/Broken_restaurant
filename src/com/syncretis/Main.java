@@ -35,15 +35,21 @@ public class Main {
         register.registerClient(client11);
 
         Client client12 = new Client(8_946_378_48_42L, "Anton", "Solnechnaya 2");
-        register.getClients().update(client12, 8_747_546_12_94L, "Sergey", "Pirogova 56A");
+        register.getClients().update(client12, 8_747_546_12_94L, "Anton", "Pirogova 56A");
 
         register.getClients().remove(client11);
         register.getClients().remove(client10);
         register.getClients().remove(client1);
 
-        Order order1 = new Order(client4);
-        for (int i = 0; i < register.getClients().length(); i++) {
+        OrderList or = new OrderList();
+        Order order1 = new Order(client4, menu.getDishByIndex(1 ,2, 3));
+        Order order2 = new Order(client4, menu.getDishByIndex(4,5));
+        or.add(order1);
+        or.add(order2);
+        or.getOrdersByClient(client4);
+
+        /*for (int i = 0; i < register.getClients().length(); i++) {
             System.out.println(register.getClients().get(i).toString());
-        }
+        }*/
     }
 }

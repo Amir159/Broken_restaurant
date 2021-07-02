@@ -10,7 +10,7 @@ public class Dish {
     }
 
     public String toString() {
-        return "Dish name: " + name + "\tCost: " + cost;
+        if (name.length() < 8) return name + "\t\t\t" + cost + "rub";
+        return name + "\t\t" + cost + "rub";
     }
-
 }
