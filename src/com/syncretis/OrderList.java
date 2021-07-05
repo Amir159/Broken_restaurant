@@ -18,7 +18,8 @@ public class OrderList {
         count++;
     }
 
-    public void getOrdersByClient(Client c) {
+    public void getOrdersByClient(long phoneNumber) {
+        Client c = new Client(phoneNumber);
         System.out.println(c.toString());
         for (int i = 0; i < count; i++) {
             if (array[i].getClient().equals(c)) {

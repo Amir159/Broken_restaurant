@@ -3,13 +3,17 @@ package com.syncretis;
 import java.util.Objects;
 
 public class Client {
-    private String name, address;
+    private String name = "Unknown", address = "None";
     private long phoneNumber;
 
     public Client(long phoneNumber, String name, String address) {
         this.phoneNumber = phoneNumber;
         this.name = name;
         this.address = address;
+    }
+
+    public Client(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

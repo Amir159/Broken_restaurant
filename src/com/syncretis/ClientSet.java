@@ -1,6 +1,7 @@
 package com.syncretis;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ClientSet {
     private int capacity = 8;
@@ -9,7 +10,6 @@ public class ClientSet {
 
     public void add(Client c) {
         if (count == capacity) {
-            //capacity *= 2;
             Client[] arrayCopy = Arrays.copyOf(array, capacity *= 2);
             array = arrayCopy;
         }
@@ -19,40 +19,41 @@ public class ClientSet {
         }
     }
 
-    public void remove(Client c) {
-        int clientPosition = find(c);
+    public void remove(long phoneNumber) {
+        int clientPosition = find(phoneNumber);
         if (clientPosition == capacity - 1) {
             array[clientPosition] = null;
             count--;
         } else if (clientPosition != -1) {
-            int j = 0;
             for (int i = clientPosition; i < count - 1; i++) {
                 array[i] = array[i + 1];
+                array[i+1] = null;
             }
             count--;
         }
     }
 
-    public void update(Client c, long phoneNumber, String name, String address) {
-        int clientPosition = find(c);
+    public void update(long phoneNumber, long newPhoneNumber, String newName, String newAddress) {
+        int clientPosition = find(phoneNumber);
         if (clientPosition != -1) {
-            array[clientPosition].setPhoneNumber(phoneNumber);
-            array[clientPosition].setName(name);
-            array[clientPosition].setAddress(address);
+            array[clientPosition].setPhoneNumber(newPhoneNumber);
+            array[clientPosition].setName(newName);
+            array[clientPosition].setAddress(newAddress);
         }
     }
 
-    public int find(Client c) {
+    public int find(long phoneNumber) {
+        Client c = new Client(phoneNumber, "Unnamed", "None");
         for (int i = 0; i < count; i++) {
-            if (array[i].hashCode() != c.hashCode()) continue;
-            if (array[i].equals(c)) {
+            if (array[i].hashCode() != c.hashCode())
+                continue;
+            if (array[i].equals(c))
                 return i;
-            }
         }
         return -1;
     }
 
-    public boolean contain(Client c) {
+    public boolean contain(Client c) {//for each
         for (int i = 0; i < count; i++) {
             if (array[i].hashCode() != c.hashCode()) continue;
             if (array[i].equals(c)) {

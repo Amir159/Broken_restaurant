@@ -3,7 +3,8 @@ package com.syncretis;
 public class RegistrationService {
     private ClientSet clients = new ClientSet();
 
-    public void registerClient(Client c) {
+    public void registerClient(long phoneNumber, String name, String address) {
+        Client c = new Client(phoneNumber, name, address);
         clients.add(c);
     }
 

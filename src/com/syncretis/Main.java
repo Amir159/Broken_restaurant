@@ -7,51 +7,36 @@ public class Main {
         OrderService order = new OrderService();
         DishMenu menu = new DishMenu();
 
+        register.registerClient(8_946_321_48_96L, "Pavel", "Sibirskaya 188");
+        register.registerClient(8_946_321_48_96L, "Pavel", "Sibirskaya 188");
+        register.registerClient(8_946_321_45_45L, "Alexandr", "Lenina 8");
+        register.registerClient(8_946_254_48_32L, "Alexey", "Kirova 15");
+        register.registerClient(8_946_378_48_01L, "Maxim", "Sorokina 49");
+        register.registerClient(8_946_378_48_42L, "Anton", "Solnechnaya 2");
+        register.registerClient(8_946_378_48_34L, "Anastasia", "Pushkina 99");
+        register.registerClient(8_946_378_48_94L, "Maria", "Uchebnaya 11");
+        register.registerClient(8_946_378_48_45L, "Tatyana", "Vershinina 8");
+        register.registerClient(8_946_378_48_54L, "Nikolai", "Nahimova 30A");
+        register.registerClient(8_946_378_48_09L, "Georgy", "Sovetskaya 10");
+        register.registerClient(8_946_378_48_07L, "Vladimir", "Krasnoarmeiskaya 159");
+
         menu.getMenu();
 
-        Client client1 = new Client(8_946_321_48_96L, "Pavel", "Sibirskaya 188");
-        Client client2 = new Client(8_946_321_45_45L, "Alexandr", "Lenina 8");
-        Client client3 = new Client(8_946_254_48_32L, "Alexey", "Kirova 15");
-        Client client4 = new Client(8_946_378_48_01L, "Maxim", "Sorokina 49");
-        Client client5 = new Client(8_946_378_48_42L, "Anton", "Solnechnaya 2");
-        Client client6 = new Client(8_946_378_48_34L, "Anastasia", "Pushkina 99");
-        Client client7 = new Client(8_946_378_48_94L, "Maria", "Uchebnaya 11");
-        Client client8 = new Client(8_946_378_48_45L, "Tatyana", "Vershinina 8");
-        Client client9 = new Client(8_946_378_48_54L, "Nikolai", "Nahimova 30A");
-        Client client10 = new Client(8_946_378_48_09L, "Georgy", "Sovetskaya 10");
-        Client client11 = new Client(8_946_378_48_07L, "Vladimir", "Krasnoarmeiskaya 159");
+        register.getClients().update(8_946_378_48_42L, 8_946_321_45_45L, "Anton", "Pirogova 56A");
 
-        register.registerClient(client1);
-        register.registerClient(client1);
-        register.registerClient(client1);
-        register.registerClient(client2);
-        register.registerClient(client3);
-        register.registerClient(client4);
-        register.registerClient(client5);
-        register.registerClient(client6);
-        register.registerClient(client7);
-        register.registerClient(client8);
-        register.registerClient(client9);
-        register.registerClient(client10);
-        register.registerClient(client11);
+        register.getClients().remove(8_946_378_48_07L);
+        register.getClients().remove(8_946_321_48_96L);
+        register.getClients().remove(8_946_321_48_96L);
+        for (int i = 0; i < register.getClients().length(); i++) {
+            System.out.println(register.getClients().get(i).toString());
+        }
 
-        Client client12 = new Client(8_946_378_48_42L, "Anton", "Solnechnaya 2");
-        register.getClients().update(client12, 8_747_546_12_94L, "Anton", "Pirogova 56A");
-
-        register.getClients().remove(client11);
-        register.getClients().remove(client10);
-        register.getClients().remove(client1);
-
-        Order order1 = new Order(client4, menu.getDishByIndex(1 ,2, 3));
-        Order order2 = new Order(client1, menu.getDishByIndex(4,5));
+        Order order1 = new Order(register.getClients(), 8_946_321_45_45L, menu.getDishByIndex(1, 2, 3));
+        Order order2 = new Order(register.getClients(), 8_946_321_45_45L, menu.getDishByIndex(4, 5));
         order.createOrder(order1);
         order.createOrder(order2);
-        order.getOrders().getOrdersByClient(client1);
+        order.getOrders().getOrdersByClient(8_946_321_45_45L);
 
         order.getOrders().getOrdersByStatus(Status.CREATED);
-
-        /*for (int i = 0; i < register.getClients().length(); i++) {
-            System.out.println(register.getClients().get(i).toString());
-        }*/
     }
 }

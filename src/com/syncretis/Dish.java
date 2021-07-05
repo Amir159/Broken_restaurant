@@ -13,7 +13,7 @@ public class Dish {
         return cost;
     }
 
-    public String toString() {
+    public String toString() { //string format
         if (name.length() < 8) return name + "\t\t\t" + cost + "rub";
         return name + "\t\t" + cost + "rub";
     }
