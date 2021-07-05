@@ -20,9 +20,17 @@ public class Order {
         return client;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         DishMenu menu = new DishMenu();
-        return "Order:\n\t" + Arrays.toString(dishes) + "\n\tStatus: " + status;
+        int total = 0;
+        for (Dish it : dishes) {
+            total += it.getCost();
+        }
+        return "Order:\n\t" + Arrays.toString(dishes) + "\n\t[Total " + total + "rub]\n\tStatus: " + status;
     }
 }

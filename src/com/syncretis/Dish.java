@@ -9,6 +9,10 @@ public class Dish {
         this.cost = cost;
     }
 
+    public int getCost() {
+        return cost;
+    }
+
     public String toString() {
         if (name.length() < 8) return name + "\t\t\t" + cost + "rub";
         return name + "\t\t" + cost + "rub";

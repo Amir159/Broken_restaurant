@@ -26,4 +26,13 @@ public class OrderList {
             }
         }
     }
+
+    public void getOrdersByStatus(Status status) {
+        System.out.println("Status: " + status);
+        for (int i = 0; i < count; i++) {
+            if (array[i].getStatus().equals(status)) {
+                System.out.println(array[i].toString());
+            }
+        }
+    }
 }

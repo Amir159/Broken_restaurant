@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         RegistrationService register = new RegistrationService();
+        OrderService order = new OrderService();
         DishMenu menu = new DishMenu();
 
         menu.getMenu();
@@ -41,12 +42,13 @@ public class Main {
         register.getClients().remove(client10);
         register.getClients().remove(client1);
 
-        OrderList or = new OrderList();
         Order order1 = new Order(client4, menu.getDishByIndex(1 ,2, 3));
-        Order order2 = new Order(client4, menu.getDishByIndex(4,5));
-        or.add(order1);
-        or.add(order2);
-        or.getOrdersByClient(client4);
+        Order order2 = new Order(client1, menu.getDishByIndex(4,5));
+        order.createOrder(order1);
+        order.createOrder(order2);
+        order.getOrders().getOrdersByClient(client1);
+
+        order.getOrders().getOrdersByStatus(Status.CREATED);
 
         /*for (int i = 0; i < register.getClients().length(); i++) {
             System.out.println(register.getClients().get(i).toString());
