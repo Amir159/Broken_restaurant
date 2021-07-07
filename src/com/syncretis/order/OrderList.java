@@ -1,4 +1,7 @@
-package com.syncretis;
+package com.syncretis.order;
+
+import com.syncretis.Status;
+import com.syncretis.client.Client;
 
 import java.util.Arrays;
 
@@ -9,20 +12,20 @@ public class OrderList {
 
     public void add(Order c) {
         if (count == capacity) {
-            Order[] arrayCopy = new Order[capacity];
-            capacity *= 2;
-            arrayCopy = Arrays.copyOf(array, capacity);
-            array = Arrays.copyOf(arrayCopy, capacity);
+            Order[] arrayCopy = Arrays.copyOf(array, capacity *= 2);
+            array = arrayCopy;
         }
+
         array[count] = c;
         count++;
+
     }
 
     public void getOrdersByClient(long phoneNumber) {
         Client c = new Client(phoneNumber);
-        System.out.println(c.toString());
         for (int i = 0; i < count; i++) {
             if (array[i].getClient().equals(c)) {
+                System.out.println(array[i].getClient().toString());
                 System.out.println(array[i].toString());
             }
         }

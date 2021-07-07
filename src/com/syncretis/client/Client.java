@@ -1,4 +1,4 @@
-package com.syncretis;
+package com.syncretis.client;
 
 import java.util.Objects;
 
@@ -31,6 +31,10 @@ public class Client {
 
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
     }
 
     @Override

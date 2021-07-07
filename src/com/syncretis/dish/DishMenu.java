@@ -1,6 +1,4 @@
-package com.syncretis;
-
-import java.util.Arrays;
+package com.syncretis.dish;
 
 public class DishMenu {
     private Dish[] dishes = new Dish[9];

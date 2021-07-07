@@ -1,5 +1,10 @@
 package com.syncretis;
 
+import com.syncretis.client.RegistrationService;
+import com.syncretis.dish.DishMenu;
+import com.syncretis.order.Order;
+import com.syncretis.order.OrderService;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,7 +14,7 @@ public class Main {
 
         register.registerClient(8_946_321_48_96L, "Pavel", "Sibirskaya 188");
         register.registerClient(8_946_321_48_96L, "Pavel", "Sibirskaya 188");
-        register.registerClient(8_946_321_45_45L, "Alexandr", "Lenina 8");
+        register.registerClient(8_946_322_45_45L, "Alexandr", "Lenina 8");
         register.registerClient(8_946_254_48_32L, "Alexey", "Kirova 15");
         register.registerClient(8_946_378_48_01L, "Maxim", "Sorokina 49");
         register.registerClient(8_946_378_48_42L, "Anton", "Solnechnaya 2");

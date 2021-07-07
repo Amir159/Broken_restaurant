@@ -1,4 +1,4 @@
-package com.syncretis;
+package com.syncretis.order;
 
 public class OrderService {
     private OrderList order = new OrderList();

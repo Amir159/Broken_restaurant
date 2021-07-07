@@ -1,7 +1,6 @@
-package com.syncretis;
+package com.syncretis.client;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class ClientSet {
     private int capacity = 8;
@@ -13,7 +12,8 @@ public class ClientSet {
             Client[] arrayCopy = Arrays.copyOf(array, capacity *= 2);
             array = arrayCopy;
         }
-        if (!contain(c)) {
+        
+        if (!contain(c.getPhoneNumber())) {
             array[count] = c;
             count++;
         }
@@ -45,17 +45,22 @@ public class ClientSet {
     public int find(long phoneNumber) {
         Client c = new Client(phoneNumber, "Unnamed", "None");
         for (int i = 0; i < count; i++) {
-            if (array[i].hashCode() != c.hashCode())
+            if (array[i].hashCode() != c.hashCode()) {
                 continue;
-            if (array[i].equals(c))
+            }
+            if (array[i].equals(c)) {
                 return i;
+            }
         }
         return -1;
     }
 
-    public boolean contain(Client c) {//for each
+    public boolean contain(long phoneNumber) {
+        Client c = new Client(phoneNumber, "Unnamed", "None");
         for (int i = 0; i < count; i++) {
-            if (array[i].hashCode() != c.hashCode()) continue;
+            if (array[i].hashCode() != c.hashCode()) {
+                continue;
+            }
             if (array[i].equals(c)) {
                 return true;
             }

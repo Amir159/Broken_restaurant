@@ -1,4 +1,4 @@
-package com.syncretis;
+package com.syncretis.client;
 
 public class RegistrationService {
     private ClientSet clients = new ClientSet();

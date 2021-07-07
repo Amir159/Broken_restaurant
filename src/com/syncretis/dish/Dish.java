@@ -1,4 +1,4 @@
-package com.syncretis;
+package com.syncretis.dish;
 
 public class Dish {
     private String name;

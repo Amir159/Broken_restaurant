@@ -1,7 +1,12 @@
-package com.syncretis;
+package com.syncretis.order;
+
+import com.syncretis.Status;
+import com.syncretis.client.Client;
+import com.syncretis.client.ClientSet;
+import com.syncretis.dish.Dish;
+import com.syncretis.dish.DishMenu;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Order {
     private Dish[] dishes;
